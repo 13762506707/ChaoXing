@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         ChaoxingBreak
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        *://*.chaoxing.com/*
+// @grant        none
+// @require      http://libs.baidu.com/jquery/2.0.0/jquery.min.js
+// ==/UserScript==
 $(document).ready(function() {
     'use strict';
     //$("<input type='myDJMButton' value='确定' width=100px hight=100px>" );
