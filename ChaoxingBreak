@@ -1,0 +1,47 @@
+$(document).ready(function() {
+    'use strict';
+    //$("<input type='myDJMButton' value='确定' width=100px hight=100px>" );
+    // Your code here...
+    //2020.8.16 completely fix the video plug
+    var videoClass = document.getElementsByClassName('ans-attach-online ans-insertvideo-online');
+    //videoClass[0].setAttribute("fastforward","false");
+    //$("#w3s").attr("href","http://www.w3school.com.cn/jquery");
+    $(videoClass).attr("fastforward","flase");
+    //alert($("#reader").html());
+    $("#reader").attr("style","height: 350px;");
+
+
+    //find question
+    //ok  alert($('.Zy_TItle .clearfix').children("div").html());
+
+    //alert("start");
+    //$("#mainid").prepend("<button type='button' style='color:blue; width:400px; height:200px;'>Click Me!</button>");
+    //var answerClassList = document.getElementsByClassName('Zy_TItle clearfix');
+    //alert(answerClassList.length);
+
+    //var list = $('.Zy_TItle .clearfix');
+    //alert(list.length);
+
+    //2020.8.16完成answerSearch
+    $(".Zy_TItle .clearfix").each(function(i,n){
+        //1.find question
+        var findValue = $(n).html();
+        //alert(findValue);
+        //删除div节点
+        findValue = findValue.replaceAll(/<div(.*)>|<\/div>/g, "");
+        findValue = findValue.replaceAll(/<p>|<\/p>/g, "");
+
+        //alert(findValue);
+        var myUrl="https://wk.julym.com/send.php?title="+findValue;
+
+        //2.find object  3.add url answer
+        $(n).prepend("<button id='MyButton"+i+"' type='button' style='color:blue; width:50px; height:50px;'>OK</button>");
+        $(n).prepend("<iframe id='myAnswered"+i+"' frameborder='0' scrolling='no' style='height:200px;height:200px;' src='"+myUrl+"'><button>didi</button></iframe>");
+
+        //bind 自己删除事件
+        $('#MyButton'+i).bind('click', function() {
+            $('#myAnswered'+i).remove();
+        });
+
+    });
+})();
